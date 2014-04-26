@@ -1,0 +1,161 @@
+(add-to-list 'load-path "~/src/org-mode/lisp")
+
+(add-hook 'org-mode-hook (lambda ()
+                           (set (make-local-variable 'electric-indent-functions)
+                                (list (lambda (arg) 'no-indent)))))
+
+(setq org-src-fontify-natively t)
+
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
+(require 'dired)
+(setq dired-recursive-deletes (quote top))
+
+(define-key dired-mode-map (kbd "f") 'dired-find-alternate-file)
+(define-key dired-mode-map (kbd "^") (lambda ()
+                                       (interactive)
+                                       (find-alternate-file "..")))
+  
+(defvar my-keys-minor-mode-map (make-keymap) "my keys")
+
+; start auto-complete with emacs
+(require 'auto-complete-config)
+(ac-config-default)
+
+; start yasnippet with emacs
+(yas-global-mode 1)
+
+(setq save-place-file (concat user-emacs-directory "saveplace.el"))
+(setq-default save-place t)
+
+(defun select-current-line ()
+  "Selects the current line"
+  (interactive)
+  (end-of-line)
+  (push-mark (line-beginning-position) nil t))
+
+(defun line-above ()
+  "Pastes line above"
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(defun cut-line-or-region ()
+  ""
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position) (line-beginning-position 2))))
+
+(global-set-key [remap kill-region] 'cut-line-or-region)
+
+(defun copy-line-or-region ()
+  ""
+  (interactive)
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+
+(global-set-key [remap kill-ring-save] 'copy-line-or-region)
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+        (goto-char end)
+        (newline)
+        (beginning-of-visual-line)
+        (insert region)
+        (setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+
+(defun my:ac-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1")
+  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include")
+  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"))
+
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
+
+(setq gc-cons-threshold 20000000)
+
+;; SML environment
+
+(setenv "PATH" (concat "/usr/local/smlnj-110.75/bin:" (getenv "PATH")))
+(setq exec-path (cons "/usr/local/smlnj-110.75/bin" exec-path))
+
+;; Key remappings
+
+(define-key my-keys-minor-mode-map (kbd "M-k") 'next-line)
+(define-key my-keys-minor-mode-map (kbd "M-i") 'previous-line)
+(define-key my-keys-minor-mode-map (kbd "M-j") 'backward-char)
+(define-key my-keys-minor-mode-map (kbd "M-l") 'forward-char)
+(define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
+(define-key my-keys-minor-mode-map (kbd "M-s-l") 'select-current-line)
+(define-key my-keys-minor-mode-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key my-keys-minor-mode-map (kbd "M-RET") 'line-above)
+(define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
+  
+(electric-indent-mode t)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-use-faces nil)
+
+(delete-selection-mode t)
+(blink-cursor-mode t)
+(show-paren-mode t)
+
+;; Gui tune
+(set-frame-font "Source Code Pro for Powerline-12")
+(when (window-system)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (custom-set-variables
+   '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+   '(custom-safe-themes (quote ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default))))
+  (custom-set-faces
+   )
+  )
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode for my custom keys"
+  t " my-keys" 'my-keys-minor-mode-map)
+(my-keys-minor-mode t)
+(projectile-global-mode)
+
+(global-visual-line-mode t) ;; Don't break inside words
+
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Disable backups
+(setq backup-inhibited t)
+(setq inhibit-startup-message   t)   ; Don't want any startup message 
+(setq make-backup-files         nil) ; Don't want any backup files 
+(setq auto-save-list-file-name  nil) ; Don't want any .saves files 
+(setq auto-save-default         nil) ; Don't want any auto saving 
+
+(setq search-highlight           t) ; Highlight search object 
+(setq query-replace-highlight    t) ; Highlight query object 
+(setq mouse-sel-retain-highlight t) ; Keep mouse high-lightening 
+
+(setq scroll-step 1)
+
+(put 'dired-find-alternate-file 'disabled nil)
