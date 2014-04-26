@@ -1,1 +1,0 @@
-("~/workspace/netoptix_vms/" "~/sdk/django/" "~/src/org-mode/" "~/workspace/nolicensed/")
