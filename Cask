@@ -1,0 +1,12 @@
+(source melpa)
+
+(depends-on "cask")
+(depends-on "color-theme-sanityinc-tomorrow")
+(depends-on "expand-region")
+(depends-on "ace-jump-mode")
+(depends-on "auto-complete")
+(depends-on "auto-complete-c-headers")
+(depends-on "flx-ido")
+(depends-on "yasnippet")
+(depends-on "projectile")
+(depends-on "helm-projectile")
