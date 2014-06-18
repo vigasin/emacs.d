@@ -6,6 +6,7 @@
 (depends-on "ace-jump-mode")
 (depends-on "auto-complete")
 (depends-on "auto-complete-c-headers")
+(depends-on "auto-complete-nxml")
 (depends-on "flx-ido")
 (depends-on "yasnippet")
 (depends-on "projectile")
