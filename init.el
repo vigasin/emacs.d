@@ -93,7 +93,11 @@ there's a region, all lines that region covers will be duplicated."
 
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
+(add-hook 'markdown-mode-hook 'smartparens-mode)
 
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq gc-cons-threshold 20000000)
 
 ;; SML environment
@@ -112,6 +116,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key my-keys-minor-mode-map (kbd "M-RET") 'line-above)
 (define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
+(define-key my-keys-minor-mode-map (kbd "C-c k") 'kill-whole-line)
   
 (electric-indent-mode t)
 (ido-mode 1)
