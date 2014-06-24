@@ -129,7 +129,9 @@ there's a region, all lines that region covers will be duplicated."
 (show-paren-mode t)
 
 ;; Gui tune
-(set-frame-font "Source Code Pro for Powerline-12")
+(if (eq system-type 'darwin)
+    (set-frame-font "Source Code Pro for Powerline-12"))
+
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
