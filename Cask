@@ -13,3 +13,4 @@
 (depends-on "helm-projectile")
 (depends-on "smartparens")
 (depends-on "markdown-mode")
+(depends-on "php-mode")
