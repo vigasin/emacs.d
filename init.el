@@ -117,6 +117,11 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "M-RET") 'line-above)
 (define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
 (define-key my-keys-minor-mode-map (kbd "C-c k") 'kill-whole-line)
+
+(define-key my-keys-minor-mode-map (kbd "C->") 'mc/mark-next-like-this)
+(define-key my-keys-minor-mode-map (kbd "C->") 'mc/mark-previous-like-this)
+(define-key my-keys-minor-mode-map (kbd "C-c C-<") 'mc/mark-all-like-this)
+(define-key my-keys-minor-mode-map (kbd "C-S-c C-S-c") 'mc/edit-lines)
   
 (electric-indent-mode t)
 (ido-mode 1)
