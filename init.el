@@ -141,11 +141,6 @@ there's a region, all lines that region covers will be duplicated."
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (custom-set-variables
-   '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
-   '(custom-safe-themes (quote ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default))))
-  (custom-set-faces
-   )
   )
 
 (define-minor-mode my-keys-minor-mode
