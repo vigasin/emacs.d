@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/src/org-mode/lisp")
 
 (add-hook 'org-mode-hook (lambda ()
@@ -9,6 +10,7 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+(require 'mercurial)
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
 
