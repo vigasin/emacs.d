@@ -14,6 +14,9 @@
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
 
+(require 'bs)
+(setq bs-configurations '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
+
 (define-key dired-mode-map (kbd "f") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^") (lambda ()
                                        (interactive)
@@ -125,6 +128,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c C-<") 'mc/mark-all-like-this)
 (define-key my-keys-minor-mode-map (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (define-key my-keys-minor-mode-map (kbd "C-x C-;") 'comment-or-uncomment-region)
+(define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
   
 (electric-indent-mode t)
 (ido-mode 1)
