@@ -15,3 +15,4 @@
 (depends-on "markdown-mode")
 (depends-on "php-mode")
 (depends-on "multiple-cursors")
+(depends-on "scss-mode")
