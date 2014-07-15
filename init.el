@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/src/org-mode/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
