@@ -1,3 +1,4 @@
+(source gnu)
 (source melpa)
 
 (depends-on "cask")
@@ -16,4 +17,4 @@
 (depends-on "php-mode")
 (depends-on "multiple-cursors")
 (depends-on "scss-mode")
-
+(depends-on "sml-mode")
