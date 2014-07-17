@@ -1,4 +1,5 @@
-(add-to-list 'load-path "~/src/org-mode/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
@@ -9,8 +10,12 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+(require 'mercurial)
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
+
+(require 'bs)
+(setq bs-configurations '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
 
 (define-key dired-mode-map (kbd "f") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^") (lambda ()
@@ -99,7 +104,11 @@ there's a region, all lines that region covers will be duplicated."
 
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
+(add-hook 'markdown-mode-hook 'smartparens-mode)
 
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq gc-cons-threshold 20000000)
 
 ;; SML environment
@@ -120,6 +129,12 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
 (define-key my-keys-minor-mode-map (kbd "C-c k") 'kill-whole-line)
 (define-key my-keys-minor-mode-map (kbd "C-c u") 'backward-kill-line)
+(define-key my-keys-minor-mode-map (kbd "C->") 'mc/mark-next-like-this)
+(define-key my-keys-minor-mode-map (kbd "C->") 'mc/mark-previous-like-this)
+(define-key my-keys-minor-mode-map (kbd "C-c C-<") 'mc/mark-all-like-this)
+(define-key my-keys-minor-mode-map (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(define-key my-keys-minor-mode-map (kbd "C-x C-;") 'comment-or-uncomment-region)
+(define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
   
 (electric-indent-mode t)
 (electric-pair-mode t)
@@ -133,15 +148,12 @@ there's a region, all lines that region covers will be duplicated."
 (show-paren-mode t)
 
 ;; Gui tune
-(set-frame-font "Source Code Pro for Powerline-12")
+(if (eq system-type 'darwin)
+    (set-frame-font "Source Code Pro for Powerline-12"))
+
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (custom-set-variables
-   '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
-   '(custom-safe-themes (quote ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default))))
-  (custom-set-faces
-   )
   )
 
 (define-minor-mode my-keys-minor-mode
@@ -171,10 +183,21 @@ there's a region, all lines that region covers will be duplicated."
 (setq scroll-step 1)
 
 (put 'dired-find-alternate-file 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(sp-base-key-bindings (quote sp)))
 
+(when (window-system)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+   '(custom-safe-themes (quote ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
+   '(sp-base-key-bindings (quote sp)))
+
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+)
