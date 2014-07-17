@@ -37,6 +37,12 @@
   (end-of-line)
   (push-mark (line-beginning-position) nil t))
 
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward"
+  (interactive "p")
+  (kill-line (- 1 arg))
+  )
+  
 (defun line-above ()
   "Pastes line above"
   (interactive)
@@ -112,8 +118,11 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key my-keys-minor-mode-map (kbd "M-RET") 'line-above)
 (define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
+(define-key my-keys-minor-mode-map (kbd "C-c k") 'kill-whole-line)
+(define-key my-keys-minor-mode-map (kbd "C-c u") 'backward-kill-line)
   
 (electric-indent-mode t)
+(electric-pair-mode t)
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
@@ -138,6 +147,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-minor-mode my-keys-minor-mode
   "A minor mode for my custom keys"
   t " my-keys" 'my-keys-minor-mode-map)
+
 (my-keys-minor-mode t)
 (projectile-global-mode)
 
