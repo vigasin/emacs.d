@@ -166,6 +166,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-visual-line-mode t) ;; Don't break inside words
 
 (setq-default tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
