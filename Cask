@@ -19,3 +19,4 @@
 (depends-on "scss-mode")
 (depends-on "sml-mode")
 (depends-on "iedit")
+(depends-on "elpy")

@@ -135,6 +135,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (define-key my-keys-minor-mode-map (kbd "C-x C-;") 'comment-or-uncomment-region)
 (define-key my-keys-minor-mode-map (kbd "C-c ;") 'iedit-mode)
+(define-key my-keys-minor-mode-map (kbd "C-c .") 'yas-expand)
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
   
 (electric-indent-mode t)
@@ -213,3 +214,5 @@ there's a region, all lines that region covers will be duplicated."
   )
 
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+
+(elpy-enable)
