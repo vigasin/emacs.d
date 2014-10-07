@@ -21,7 +21,7 @@
 (define-key dired-mode-map (kbd "^") (lambda ()
                                        (interactive)
                                        (find-alternate-file "..")))
-  
+
 (defvar my-keys-minor-mode-map (make-keymap) "my keys")
 
 ; start auto-complete with emacs
@@ -47,7 +47,7 @@
   (interactive "p")
   (kill-line (- 1 arg))
   )
-  
+
 (defun line-above ()
   "Pastes line above"
   (interactive)
@@ -139,7 +139,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c ;") 'iedit-mode)
 (define-key my-keys-minor-mode-map (kbd "C-c .") 'yas-expand)
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
-  
+
 (electric-indent-mode t)
 (electric-pair-mode t)
 (ido-mode 1)
@@ -155,6 +155,7 @@ there's a region, all lines that region covers will be duplicated."
 (if (eq system-type 'darwin)
     (set-frame-font "Source Code Pro for Powerline-12"))
 
+(menu-bar-mode -1)
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -176,14 +177,14 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; Disable backups
 (setq backup-inhibited t)
-(setq inhibit-startup-message   t)   ; Don't want any startup message 
-(setq make-backup-files         nil) ; Don't want any backup files 
-(setq auto-save-list-file-name  nil) ; Don't want any .saves files 
-(setq auto-save-default         nil) ; Don't want any auto saving 
+(setq inhibit-startup-message   t)   ; Don't want any startup message
+(setq make-backup-files         nil) ; Don't want any backup files
+(setq auto-save-list-file-name  nil) ; Don't want any .saves files
+(setq auto-save-default         nil) ; Don't want any auto saving
 
-(setq search-highlight           t) ; Highlight search object 
-(setq query-replace-highlight    t) ; Highlight query object 
-(setq mouse-sel-retain-highlight t) ; Keep mouse high-lightening 
+(setq search-highlight           t) ; Highlight search object
+(setq query-replace-highlight    t) ; Highlight query object
+(setq mouse-sel-retain-highlight t) ; Keep mouse high-lightening
 
 (setq scroll-step 1)
 
@@ -216,5 +217,6 @@ there's a region, all lines that region covers will be duplicated."
   )
 
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (elpy-enable)
