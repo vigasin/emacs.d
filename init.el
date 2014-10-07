@@ -113,7 +113,9 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; SML environment
 
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setenv "PATH" (concat "/usr/local/smlnj-110.75/bin:" (getenv "PATH")))
+(setq exec-path (cons "/usr/local/bin" exec-path))
 (setq exec-path (cons "/usr/local/smlnj-110.75/bin" exec-path))
 
 ;; Key remappings
