@@ -20,3 +20,4 @@
 (depends-on "sml-mode")
 (depends-on "iedit")
 (depends-on "elpy")
+(depends-on "racket-mode")

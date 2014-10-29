@@ -217,6 +217,10 @@ there's a region, all lines that region covers will be duplicated."
   )
 
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (elpy-enable)
