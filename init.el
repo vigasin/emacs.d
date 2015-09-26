@@ -5,6 +5,9 @@
                            (set (make-local-variable 'electric-indent-functions)
                                 (list (lambda (arg) 'no-indent)))))
 
+(add-hook 'python-mode-hook
+  (lambda () (setq python-indent-offset 4)))
+
 (setq org-src-fontify-natively t)
 
 (require 'cask "~/.cask/cask.el")
@@ -139,6 +142,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c ;") 'iedit-mode)
 (define-key my-keys-minor-mode-map (kbd "C-c .") 'yas-expand)
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
+(define-key my-keys-minor-mode-map (kbd "<f8>") 'neotree-toggle)
 
 (electric-indent-mode t)
 (electric-pair-mode t)
@@ -220,6 +224,9 @@ there's a region, all lines that region covers will be duplicated."
 (add-hook 'c-mode-common-hook
           (lambda()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)))
+
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

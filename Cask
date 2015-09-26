@@ -21,3 +21,5 @@
 (depends-on "iedit")
 (depends-on "elpy")
 (depends-on "racket-mode")
+(depends-on "emmet-mode")
+(depends-on "neotree")
