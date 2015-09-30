@@ -23,3 +23,4 @@
 (depends-on "racket-mode")
 (depends-on "emmet-mode")
 (depends-on "neotree")
+(depends-on "haskell-mode")
