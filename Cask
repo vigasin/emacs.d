@@ -24,3 +24,4 @@
 (depends-on "emmet-mode")
 (depends-on "neotree")
 (depends-on "haskell-mode")
+(depends-on "yaml-mode")

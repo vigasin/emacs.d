@@ -8,6 +8,9 @@
 (add-hook 'python-mode-hook
   (lambda () (setq python-indent-offset 4)))
 
+(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
 (setq org-src-fontify-natively t)
 
 (require 'cask "~/.cask/cask.el")
