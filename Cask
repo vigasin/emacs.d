@@ -25,3 +25,5 @@
 (depends-on "neotree")
 (depends-on "haskell-mode")
 (depends-on "yaml-mode")
+(depends-on "helm-ls-git")
+(depends-on "helm-ls-hg")
