@@ -90,6 +90,17 @@
 
 (global-set-key [remap kill-ring-save] 'copy-line-or-region)
 
+(defun comment-dwim-line (&optional arg)
+       "Replacement for the comment-dwim command.
+       If no region is selected and current line is not blank and we are not at the end of the line,
+       then comment current line.
+       Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+         (interactive "*P")
+         (comment-normalize-vars)
+         (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+             (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+           (comment-dwim arg)))
+
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
 If there's no region, the current line will be duplicated. However, if
@@ -156,6 +167,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c .") 'yas-expand)
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
 (define-key my-keys-minor-mode-map (kbd "<f8>") 'neotree-toggle)
+(define-key my-keys-minor-mode-map (kbd "M-;") 'comment-dwim-line)
 
 (electric-indent-mode t)
 (electric-pair-mode t)
