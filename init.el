@@ -26,6 +26,7 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+(require 'helm-config)
 (require 'mercurial)
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
@@ -168,6 +169,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
 (define-key my-keys-minor-mode-map (kbd "<f8>") 'neotree-toggle)
 (define-key my-keys-minor-mode-map (kbd "M-;") 'comment-dwim-line)
+(define-key my-keys-minor-mode-map (kbd "M-o") 'other-window)
 
 (electric-indent-mode t)
 (electric-pair-mode t)
@@ -256,3 +258,5 @@ there's a region, all lines that region covers will be duplicated."
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (elpy-enable)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
