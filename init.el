@@ -8,6 +8,14 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 
+(defun org-my-custom-timestamp ()
+  (interactive)
+  (insert (format-time-string "%H:%M")))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key "\C-c-" 'org-my-custom-timestamp)))
+
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
                                 (list (lambda (arg) 'no-indent)))))
