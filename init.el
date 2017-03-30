@@ -268,3 +268,4 @@ there's a region, all lines that region covers will be duplicated."
 (elpy-enable)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
