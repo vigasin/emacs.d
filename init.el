@@ -145,6 +145,7 @@ there's a region, all lines that region covers will be duplicated."
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 (setq gc-cons-threshold 20000000)
 
 ;; SML environment
