@@ -1,0 +1,10 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Tracking.org"
+ (filename . "~/Dropbox/Work/Tracking.org")
+ (front-context-string . "- [ ] Support Mu")
+ (rear-context-string . "t Let's Encrypt\n")
+ (position . 87869))
+)
