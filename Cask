@@ -29,3 +29,4 @@
 (depends-on "helm-ls-hg")
 (depends-on "ag")
 (depends-on "ledger-mode")
+(depends-on "go-mode")
