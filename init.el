@@ -32,6 +32,7 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 (setq org-src-fontify-natively t)
+(setq org-agenda-files '("~/Dropbox/AppData/org"))
 
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
@@ -272,17 +273,3 @@ there's a region, all lines that region covers will be duplicated."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (yaml-mode sml-mode smartparens scss-mode racket-mode php-mode neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
