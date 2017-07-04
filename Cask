@@ -30,3 +30,4 @@
 (depends-on "ag")
 (depends-on "ledger-mode")
 (depends-on "go-mode")
+(depends-on "org-bullets")
