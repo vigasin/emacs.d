@@ -8,7 +8,11 @@
  (rear-context-string)
  (position . 1))
 ("Tracking.org"
- (filename . "~/Dropbox/Work/Tracking.org")
+ (filename .
+           #("~/Dropbox/Projects/Work/Tracking.org" 10 13
+             (face flx-highlight-face)
+             19 21
+             (face flx-highlight-face)))
  (front-context-string . "- [ ] Reconfigur")
  (rear-context-string . "l\n***** 11:22 -\n")
  (position . 90406))

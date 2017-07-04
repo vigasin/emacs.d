@@ -153,12 +153,26 @@ there's a region, all lines that region covers will be duplicated."
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 (setq gc-cons-threshold 20000000)
 
+(defun set-exec-path-from-shell-PATH ()
+  "Sets the exec-path to the same value used by the user shell"
+  (let ((path-from-shell
+         (replace-regexp-in-string
+          "[[:space:]\n]*$" ""
+          (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+;; call function now
+(set-exec-path-from-shell-PATH)
+
 ;; SML environment
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setenv "PATH" (concat "/usr/local/smlnj-110.75/bin:" (getenv "PATH")))
+(setenv "PATH" (concat "/Library/TeX/texbin/tex:" (getenv "PATH")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (setq exec-path (cons "/usr/local/smlnj-110.75/bin" exec-path))
+(setq exec-path (cons "/Library/TeX/texbin/tex" exec-path))
 
 ;; Key remappings
 
@@ -275,3 +289,22 @@ there's a region, all lines that region covers will be duplicated."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+ '(custom-safe-themes
+   (quote
+    ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
+ '(package-selected-packages
+   (quote
+    (ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
+ '(sp-base-key-bindings (quote sp)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

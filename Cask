@@ -31,3 +31,5 @@
 (depends-on "ledger-mode")
 (depends-on "go-mode")
 (depends-on "org-bullets")
+(depends-on "htmlize")
+(depends-on "ox-twbs")
