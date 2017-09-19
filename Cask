@@ -33,3 +33,5 @@
 (depends-on "org-bullets")
 (depends-on "htmlize")
 (depends-on "ox-twbs")
+(depends-on "jinja2-mode")
+(depends-on "json-mode")
