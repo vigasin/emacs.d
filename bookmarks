@@ -11,10 +11,4 @@
  (filename . "~/Dropbox/AppData/finances.ledger")
  (front-context-string . "= /^Equity:Openi")
  (rear-context-string)
- (position . 1))
-("Tracking.org"
- (filename . "~/Dropbox/AOR/Work/Tracking.org")
- (front-context-string . "\n*****\n- [ ] k8s")
- (rear-context-string . " Jan 14 - Jan 19")
- (position . 106371))
-)
+ (position . 1)))

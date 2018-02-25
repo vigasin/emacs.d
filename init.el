@@ -18,11 +18,15 @@
           (lambda ()
             (local-set-key "\C-c-" 'org-my-custom-timestamp)))
 
-; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
                                 (list (lambda (arg) 'no-indent)))))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c -") 'org-my-custom-timestamp)))
 
 (add-hook 'python-mode-hook
   (lambda () (setq python-indent-offset 4)))
@@ -56,6 +60,7 @@
 
 (require 'helm-config)
 (require 'mercurial)
+(require 'json-mode)
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
 
@@ -316,7 +321,7 @@ there's a region, all lines that region covers will be duplicated."
     ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
  '(package-selected-packages
    (quote
-    (ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
+    (json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
  '(sp-base-key-bindings (quote sp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
