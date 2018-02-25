@@ -24,8 +24,6 @@
           (lambda ()
             (local-set-key "\C-c-" 'org-my-custom-timestamp)))
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
                                 (list (lambda (arg) 'no-indent)))))
