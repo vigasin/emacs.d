@@ -2,18 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("finances.ledger"
+(("org-capture-last-stored"
+ (filename . "~/personal/ledger")
+ (front-context-string . "2018-02-21 * Bub")
+ (rear-context-string . "roceries  $1.23\n")
+ (position . 133))
+("finances.ledger"
  (filename . "~/Dropbox/AppData/finances.ledger")
  (front-context-string . "= /^Equity:Openi")
  (rear-context-string)
  (position . 1))
 ("Tracking.org"
- (filename .
-           #("~/Dropbox/Projects/Work/Tracking.org" 10 13
-             (face flx-highlight-face)
-             19 21
-             (face flx-highlight-face)))
- (front-context-string . "- [ ] Reconfigur")
- (rear-context-string . "l\n***** 11:22 -\n")
- (position . 90406))
+ (filename . "~/Dropbox/AOR/Work/Tracking.org")
+ (front-context-string . "\n*****\n- [ ] k8s")
+ (rear-context-string . " Jan 14 - Jan 19")
+ (position . 106371))
 )
