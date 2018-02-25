@@ -242,6 +242,7 @@ there's a region, all lines that region covers will be duplicated."
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (set-frame-size (selected-frame) 182 55)
   )
 
 (define-minor-mode my-keys-minor-mode
