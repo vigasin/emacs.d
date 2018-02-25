@@ -20,13 +20,15 @@
       '((sequence "TODO(t)" "|" "DONE(d)" "PART(p)" "DELEGATED(D)")
         (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key "\C-c-" 'org-my-custom-timestamp)))
+
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
                                 (list (lambda (arg) 'no-indent)))))
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c -") 'org-my-custom-timestamp)))
 
 (add-hook 'python-mode-hook
   (lambda () (setq python-indent-offset 4)))
@@ -40,6 +42,21 @@
 (setq python-shell-interpreter "python3")
 (setq org-src-fontify-natively t)
 (setq org-agenda-files '("~/Dropbox/AppData/org"))
+(setq org-capture-templates
+      '(("l" "Ledger entries")
+                ("lm" "MBNA" plain
+                 (file "~/personal/ledger")
+                 "%(org-read-date) %^{Payee}
+  Liabilities:MBNA
+  Expenses:%^{Account}  %^{Amount}
+")
+                ("lc" "Cash" plain
+                (file "~/personal/ledger")
+	        "%(org-read-date) * %^{Payee}
+  Expenses:Cash
+  Expenses:%^{Account}  %^{Amount}
+")))
+
 
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
@@ -182,6 +199,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; Key remappings
 
+(define-key my-keys-minor-mode-map (kbd "C-c r") 'org-capture)
 (define-key my-keys-minor-mode-map (kbd "M-k") 'next-line)
 (define-key my-keys-minor-mode-map (kbd "M-i") 'previous-line)
 (define-key my-keys-minor-mode-map (kbd "M-j") 'backward-char)

@@ -2,14 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("finances.ledger"
+(("org-capture-last-stored"
+ (filename . "~/personal/ledger")
+ (front-context-string . "2018-02-21 * Bub")
+ (rear-context-string . "roceries  $1.23\n")
+ (position . 133))
+("finances.ledger"
  (filename . "~/Dropbox/AppData/finances.ledger")
  (front-context-string . "= /^Equity:Openi")
  (rear-context-string)
- (position . 1))
-("Tracking.org"
- (filename . "~/Dropbox/AOR/Work/Tracking.org")
- (front-context-string . "\n** TODO add mis")
- (rear-context-string . "tserver:\n* Later")
- (position . 7165))
-)
+ (position . 1)))
