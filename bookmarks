@@ -8,8 +8,8 @@
  (rear-context-string)
  (position . 1))
 ("Tracking.org"
- (filename . "~/Dropbox/Projects/Work/Tracking.org")
- (front-context-string . "lytics in docker")
- (rear-context-string . "es\n- [ ] Run ana")
- (position . 93085))
+ (filename . "~/Dropbox/AOR/Work/Tracking.org")
+ (front-context-string . "\n** TODO add mis")
+ (rear-context-string . "tserver:\n* Later")
+ (position . 7165))
 )

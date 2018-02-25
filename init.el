@@ -14,7 +14,11 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)" "PART(p)" "DELEGATED(D)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")))
 
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
@@ -33,6 +37,7 @@
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+(setq python-shell-interpreter "python3")
 (setq org-src-fontify-natively t)
 (setq org-agenda-files '("~/Dropbox/AppData/org"))
 
@@ -196,7 +201,7 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-c ;") 'iedit-mode)
 (define-key my-keys-minor-mode-map (kbd "C-c .") 'yas-expand)
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'bs-show)
-(define-key my-keys-minor-mode-map (kbd "<f8>") 'neotree-toggle)
+(define-key my-keys-minor-mode-map (kbd "<f8>") 'treemacs-toggle)
 (define-key my-keys-minor-mode-map (kbd "M-;") 'comment-dwim-line)
 (define-key my-keys-minor-mode-map (kbd "M-o") 'other-window)
 
@@ -299,9 +304,10 @@ there's a region, all lines that region covers will be duplicated."
  '(custom-safe-themes
    (quote
     ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
+ '(org-tags-column 120)
  '(package-selected-packages
    (quote
-    (json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
+    (treemacs json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
  '(sp-base-key-bindings (quote sp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
