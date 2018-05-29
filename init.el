@@ -42,15 +42,15 @@
 (setq org-agenda-files '("~/Dropbox/AppData/org"))
 (setq org-capture-templates
       '(("l" "Ledger entries")
-                ("lm" "MBNA" plain
-                 (file "~/personal/ledger")
-                 "%(org-read-date) %^{Payee}
+        ("lm" "MBNA" plain
+         (file "~/personal/ledger")
+         "%(org-read-date) %^{Payee}
   Liabilities:MBNA
   Expenses:%^{Account}  %^{Amount}
 ")
-                ("lc" "Cash" plain
-                (file "~/personal/ledger")
-	        "%(org-read-date) * %^{Payee}
+        ("lc" "Cash" plain
+         (file "~/personal/ledger")
+         "%(org-read-date) * %^{Payee}
   Expenses:Cash
   Expenses:%^{Account}  %^{Amount}
 ")))
@@ -271,6 +271,8 @@ there's a region, all lines that region covers will be duplicated."
 (setq scroll-step 1)
 
 (put 'dired-find-alternate-file 'disabled nil)
+
+(load-file "~/.emacs.d/worktime.el")
 
 (when (window-system)
   (custom-set-variables

@@ -36,3 +36,4 @@
 (depends-on "ox-twbs")
 (depends-on "jinja2-mode")
 (depends-on "json-mode")
+(depends-on "terraform-mode")
