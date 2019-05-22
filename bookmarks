@@ -1,24 +1,24 @@
-;;;; Emacs Bookmark Format Version 1 ;;;;
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("todo.org"
- (filename . "~/Dropbox/Org/Personal/todo.org")
+ (filename . "~/Google Drive/Org/Personal/todo.org")
  (front-context-string)
  (rear-context-string . "Things\n** Inbox\n")
  (position . 110))
 ("Tracking.org"
- (filename . "~/Dropbox/Org/Professional/Tracking.org")
- (front-context-string . "** TODO HM page\n")
- (rear-context-string . "2018-05-08 Tue]\n")
- (position . 24891))
+ (filename . "~/Google Drive/Org/Professional/Tracking.org")
+ (front-context-string . "TODO NCD-56 Swit")
+ (rear-context-string . "Wed] 09:00 -\n** ")
+ (position . 63523))
 ("org-capture-last-stored"
  (filename . "~/personal/ledger")
  (front-context-string . "2018-02-21 * Bub")
  (rear-context-string . "roceries  $1.23\n")
  (position . 133))
 ("finances.ledger"
- (filename . "~/Dropbox/AppData/finances.ledger")
+ (filename . "~/Google Drive/AppData/finances.ledger")
  (front-context-string . "= /^Equity:Openi")
  (rear-context-string)
  (position . 1))

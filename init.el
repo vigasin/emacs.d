@@ -1,12 +1,11 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+; (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 
 (defun org-my-custom-timestamp ()
   (interactive)
@@ -39,7 +38,7 @@
 
 (setq python-shell-interpreter "python3")
 (setq org-src-fontify-natively t)
-(setq org-agenda-files '("~/Dropbox/AppData/org"))
+(setq org-agenda-files '("~/Google Drive/AppData/org"))
 (setq org-capture-templates
       '(("l" "Ledger entries")
         ("lm" "MBNA" plain
