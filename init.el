@@ -86,6 +86,21 @@
 (setq save-place-file (concat user-emacs-directory "saveplace.el"))
 (setq-default save-place t)
 
+(defun via-hgrc-push-fix()
+  (interactive)
+
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+
+  (let*
+      ((line (replace-regexp-in-string "default" "default-push" (car kill-ring)))
+       (line (replace-regexp-in-string "la.hdw.mx" "hdw.mx" line)))
+
+    (insert line)))
+
 (defun select-current-line ()
   "Selects the current line"
   (interactive)
@@ -204,7 +219,6 @@ there's a region, all lines that region covers will be duplicated."
 (define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
 (define-key my-keys-minor-mode-map (kbd "M-s-l") 'select-current-line)
 (define-key my-keys-minor-mode-map (kbd "C-c SPC") 'ace-jump-mode)
-(define-key my-keys-minor-mode-map (kbd "M-RET") 'line-above)
 (define-key my-keys-minor-mode-map (kbd "C-c d") 'duplicate-current-line-or-region)
 (define-key my-keys-minor-mode-map (kbd "C-c k") 'kill-whole-line)
 (define-key my-keys-minor-mode-map (kbd "C-c u") 'backward-kill-line)
