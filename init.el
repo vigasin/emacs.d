@@ -11,6 +11,10 @@
   (interactive)
   (insert (format-time-string "%H:%M")))
 
+(defun org-my-jira-tasks ()
+  (interactive)
+  (insert (shell-command-to-string "/Users/ivigasin/bin/jira mine")))
+
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -21,7 +25,8 @@
 
 (add-hook 'org-mode-hook
           (lambda ()
-            (local-set-key "\C-c-" 'org-my-custom-timestamp)))
+            (local-set-key "\C-c-" 'org-my-custom-timestamp)
+            (local-set-key "\C-c=" 'org-my-jira-tasks)))
 
 (add-hook 'org-mode-hook (lambda ()
                            (set (make-local-variable 'electric-indent-functions)
