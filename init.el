@@ -4,6 +4,8 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;(debug-on-entry 'package-initialize)
+
 ; (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
@@ -43,6 +45,7 @@
 
 (setq python-shell-interpreter "python3")
 (setq org-src-fontify-natively t)
+(setq org-return-follows-link t)
 (setq org-agenda-files '("~/Google Drive/AppData/org"))
 (setq org-capture-templates
       '(("l" "Ledger entries")
@@ -271,7 +274,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-visual-line-mode t) ;; Don't break inside words
 
 (setq-default tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
+;(defvaralias 'c-basic-offset 'tab-width)
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 

@@ -37,5 +37,5 @@
 (depends-on "jinja2-mode")
 (depends-on "json-mode")
 (depends-on "terraform-mode")
-(depends-on "org-mode")
+(depends-on "org")
 
