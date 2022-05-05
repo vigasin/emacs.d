@@ -66,7 +66,7 @@
 
 
 (require 'cask "~/.cask/cask.el")
-(cask-initialize)
+(cask--initialize)
 
 (require 'helm-config)
 (require 'mercurial)
