@@ -1,7 +1,7 @@
 (source gnu)
 (source melpa)
 
-(depends-on "cask")
+;(depends-on "cask")
 (depends-on "color-theme-sanityinc-tomorrow")
 (depends-on "expand-region")
 (depends-on "ace-jump-mode")
@@ -27,7 +27,6 @@
 (depends-on "haskell-mode")
 (depends-on "yaml-mode")
 (depends-on "helm-ls-git")
-(depends-on "helm-ls-hg")
 (depends-on "ag")
 (depends-on "ledger-mode")
 (depends-on "go-mode")

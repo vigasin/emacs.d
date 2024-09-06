@@ -11,13 +11,18 @@
 ; (add-to-list 'load-path "~/.emacs.d/lisp/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
+;; Disable lockfiles globally
+(setq create-lockfiles nil)
+
+(setq custom-safe-themes t)
+
 (defun org-my-custom-timestamp ()
   (interactive)
   (insert (format-time-string "%H:%M")))
 
 (defun org-my-jira-tasks ()
   (interactive)
-  (insert (shell-command-to-string "/Users/ivigasin/bin/jira mine")))
+  (insert (shell-command-to-string "jira mine")))
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -68,9 +73,8 @@
 (require 'cask "~/.cask/cask.el")
 (cask--initialize)
 
-(require 'helm-config)
-(require 'mercurial)
-(require 'json-mode)
+;(require 'helm-config)
+;(require 'json-mode)
 (require 'dired)
 (setq dired-recursive-deletes (quote top))
 
@@ -303,16 +307,10 @@ there's a region, all lines that region covers will be duplicated."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
-   '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+   '(load-theme 'sanityinc-tomorrow-night t) ;; Ensure this is not repeated multiple times
+   '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
    '(custom-safe-themes (quote ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
    '(sp-base-key-bindings (quote sp)))
-
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
 )
 
 ; turn on semantic
@@ -342,15 +340,16 @@ there's a region, all lines that region covers will be duplicated."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+ '(custom-enabled-themes '(sanityinc-tomorrow-night))
  '(custom-safe-themes
-   (quote
-    ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
+   '("6fc9e40b4375d9d8d0d9521505849ab4d04220ed470db0b78b700230da0a86c1" "58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default))
+ '(load-theme 'sanityinc-tomorrow-night t)
  '(org-tags-column 120)
  '(package-selected-packages
-   (quote
-    (treemacs json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode)))
- '(sp-base-key-bindings (quote sp)))
+   '(treemacs json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode))
+ '(sp-base-key-bindings 'sp)
+ '(warning-suppress-log-types '(((package reinitialization)) ((unlock-file))))
+ '(warning-suppress-types '(((package reinitialization)) ((unlock-file)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
