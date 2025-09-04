@@ -3,6 +3,15 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
+; (require 'package)
+; (setq package-archives
+;       '(("gnu" . "https://elpa.gnu.org/packages/")
+;         ("melpa" . "https://melpa.org/packages/")))
+; (package-initialize)
+
+(require 'cask "~/.cask/cask.el")
+(cask--initialize)
+
 (setq warning-suppress-log-types '((package reinitialization)))
 ; (package-initialize)
 
@@ -14,7 +23,7 @@
 ;; Disable lockfiles globally
 (setq create-lockfiles nil)
 
-(setq custom-safe-themes t)
+;; (setq custom-safe-themes t)
 
 (defun org-my-custom-timestamp ()
   (interactive)
@@ -50,12 +59,27 @@
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+;; Add this function to your config first
+(defun my-week-monday ()
+  "Return Monday of current week in YYYY-MM-DD Day format"
+  (let* ((now (current-time))
+         (dow (string-to-number (format-time-string "%w" now)))
+         (days-back (if (= dow 0) 6 (1- dow))))
+    (format-time-string "%Y-%m-%d %a" (time-subtract now (days-to-time days-back)))))
+
 (setq python-shell-interpreter "python3")
 (setq org-src-fontify-natively t)
 (setq org-return-follows-link t)
 (setq org-agenda-files '("~/Google Drive/AppData/org"))
 (setq org-capture-templates
-      '(("l" "Ledger entries")
+      '(
+("w" "Weekly Progress" plain
+ (function (lambda () (current-buffer)))
+ "* [%(my-week-monday)]
+** Goals/Achievements
+"
+ :immediate-finish t)
+        ("l" "Ledger entries")
         ("lm" "MBNA" plain
          (file "~/personal/ledger")
          "%(org-read-date) %^{Payee}
@@ -69,9 +93,6 @@
   Expenses:%^{Account}  %^{Amount}
 ")))
 
-
-(require 'cask "~/.cask/cask.el")
-(cask--initialize)
 
 ;(require 'helm-config)
 ;(require 'json-mode)
@@ -303,13 +324,14 @@ there's a region, all lines that region covers will be duplicated."
 
 (when (window-system)
   (custom-set-variables
+   '(custom-safe-themes t)
    ;; custom-set-variables was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(load-theme 'sanityinc-tomorrow-night t) ;; Ensure this is not repeated multiple times
    '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
-   '(custom-safe-themes (quote ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
+   ;; '(custom-safe-themes (quote ("58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default)))
    '(sp-base-key-bindings (quote sp)))
 )
 
@@ -342,11 +364,20 @@ there's a region, all lines that region covers will be duplicated."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(sanityinc-tomorrow-night))
  '(custom-safe-themes
-   '("6fc9e40b4375d9d8d0d9521505849ab4d04220ed470db0b78b700230da0a86c1" "58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" default))
+   '("6fc9e40b4375d9d8d0d9521505849ab4d04220ed470db0b78b700230da0a86c1"
+     "58fb295e041032fd7a61074ca134259dfdef557ca67d37c4240dbfbb11b8fcc7"
+     "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d"
+     default))
  '(load-theme 'sanityinc-tomorrow-night t)
  '(org-tags-column 120)
  '(package-selected-packages
-   '(treemacs json-mode ox-twbs htmlize yaml-mode sml-mode smartparens scss-mode racket-mode php-mode org-bullets neotree multiple-cursors markdown-mode ledger-mode iedit helm-projectile helm-ls-hg helm-ls-git haskell-mode go-mode flx-ido expand-region emmet-mode elpy color-theme-sanityinc-tomorrow cask auto-complete-nxml auto-complete-c-headers ag ace-jump-mode))
+   '(treemacs json-mode ox-twbs htmlize yaml-mode sml-mode smartparens
+              scss-mode racket-mode php-mode org-bullets neotree
+              multiple-cursors markdown-mode ledger-mode iedit
+              helm-projectile helm-ls-hg helm-ls-git haskell-mode
+              go-mode flx-ido expand-region emmet-mode elpy
+              color-theme-sanityinc-tomorrow cask auto-complete-nxml
+              auto-complete-c-headers ag ace-jump-mode))
  '(sp-base-key-bindings 'sp)
  '(warning-suppress-log-types '(((package reinitialization)) ((unlock-file))))
  '(warning-suppress-types '(((package reinitialization)) ((unlock-file)))))
